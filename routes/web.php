@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/entre', function () {
-    return view('Bem_vindo');
+    return view('evento');
 });
 
 Route::get('/dashboard', function () {
