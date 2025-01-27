@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Eventcontroller;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/',  [Eventcontroller::class, 'index']); 
+Route::get('/perfil/forms',  [Eventcontroller::class, 'forms']); 
 
 Route::get('/evento', function () {
     return view('evento');
@@ -20,7 +21,7 @@ Route::get('/tabelas', function () {
 })->middleware(['auth', 'verified'])->name('tables');
 
 Route::get('/cadastrar-evento', function () {
-    return view('forms');
+    return view('/perfil/forms');
 })->middleware(['auth', 'verified'])->name('form');
 
 Route::get('/in', function () {
@@ -28,7 +29,7 @@ Route::get('/in', function () {
 })->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('/perfil/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
