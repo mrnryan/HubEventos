@@ -6,7 +6,8 @@ use App\Http\Controllers\Eventcontroller;
 
 
 Route::get('/',  [Eventcontroller::class, 'index']); 
-Route::get('/perfil/forms',  [Eventcontroller::class, 'forms']); 
+Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']); 
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
 Route::get('/evento', function () {
     return view('evento');
@@ -19,10 +20,6 @@ Route::get('/Dashboarde', function () {
 Route::get('/tabelas', function () {
     return view('tables');
 })->middleware(['auth', 'verified'])->name('tables');
-
-Route::get('/cadastrar-evento', function () {
-    return view('/perfil/forms');
-})->middleware(['auth', 'verified'])->name('form');
 
 Route::get('/in', function () {
     return view('index');

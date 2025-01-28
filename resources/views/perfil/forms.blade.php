@@ -6,7 +6,8 @@
 
 <section class="bg-gray-100 mt-6">
   <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-    <form action="#" class="space-y-4">
+    <form method="POST" action="{{ route('events.store') }}" class="space-y-4">
+      @csrf
       
       <!-- Upload de Imagem -->
       <div>
@@ -29,12 +30,12 @@
 
       <!-- Nome do Evento -->
       <div>
-        <label class="block text-sm font-medium text-gray-700" for="event-name">Nome do Evento</label>
+        <label class="block text-sm font-medium text-gray-700" for="title" name="title" required >Nome do Evento</label>
         <input
           class="w-full rounded-lg border-gray-200 p-3 text-sm"
           placeholder="Digite o nome do evento"
           type="text"
-          id="event-name"
+          id="title"
         />
       </div>
 
@@ -97,13 +98,33 @@
 
       <!-- Descrição do Evento -->
       <div>
-        <label class="block text-sm font-medium text-gray-700" for="event-description">Descrição do Evento</label>
+        <label class="block text-sm font-medium text-gray-700" for="description">Descrição do Evento</label>
         <textarea
           class="w-full rounded-lg border-gray-200 p-3 text-sm"
           placeholder="Digite uma descrição detalhada do evento"
           rows="5"
-          id="event-description"
+          id="description"
         ></textarea>
+      </div>
+
+      <!-- Local do Evento -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="local">Local do Evento</label>
+        <input
+          class="w-full rounded-lg border-gray-200 p-3 text-sm"
+          placeholder="Digite o local do evento"
+          type="text"
+          id="local"
+        />
+      </div>
+
+      <!-- Descrição do Evento -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="obrigatorio">O evento é obrigatorio?</label>
+        <select name="obrigatorio" id="obrigatorio">
+          <option value="0">Não</option>
+          <option value="1">Sim</option>
+        </select>
       </div>
 
       <!-- Botão de Cadastro -->
@@ -116,6 +137,35 @@
         </button>
       </div>
     </form>
+
+
+
+
+
+
+
+    <form method="POST" action="{{ route('events.store') }}" class="space-y-4">
+    @csrf
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" placeholder="Título do Evento" required>
+
+    <label for="description">Descrição:</label>
+    <textarea id="description" name="description" placeholder="Descrição"></textarea>
+
+    <label for="local">Local:</label>
+    <input type="text" id="local" name="local" placeholder="Local do Evento" required>
+
+    <label for="obrigatorio">Obrigatório:</label>
+    <input type="checkbox" id="obrigatorio" name="obrigatorio" value="1">
+
+    <button type="submit">Salvar Evento</button>
+    </form>
+
+
+
+
+
+
   </div>
 </section>
 
