@@ -26,116 +26,7 @@
             <img id="preview" class="h-full w-full object-cover hidden" />
           </div>
         </div>
-      </div>
-
-      <!-- Nome do Evento -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700" for="title" name="title" required >Nome do Evento</label>
-        <input
-          class="w-full rounded-lg border-gray-200 p-3 text-sm"
-          placeholder="Digite o nome do evento"
-          type="text"
-          id="title"
-        />
-      </div>
-
-      <!-- Data e Local -->
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label class="block text-sm font-medium text-gray-700" for="event-date">Data do Evento</label>
-          <input
-            class="w-full rounded-lg border-gray-200 p-3 text-sm"
-            placeholder="Selecione a data"
-            type="date"
-            id="event-date"
-          />
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium text-gray-700" for="event-location">Local do Evento</label>
-          <input
-            class="w-full rounded-lg border-gray-200 p-3 text-sm"
-            placeholder="Digite o local"
-            type="text"
-            id="event-location"
-          />
-        </div>
-      </div>
-
-      <!-- Categoria do Evento -->
-      <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
-        <div>
-          <label
-            for="option-conference"
-            class="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-            tabindex="0"
-          >
-            <input class="sr-only" id="option-conference" type="radio" name="event-category" />
-            <span class="text-sm"> Conferência </span>
-          </label>
-        </div>
-        <div>
-          <label
-            for="option-workshop"
-            class="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-            tabindex="0"
-          >
-            <input class="sr-only" id="option-workshop" type="radio" name="event-category" />
-            <span class="text-sm"> Workshop </span>
-          </label>
-        </div>
-        <div>
-          <label
-            for="option-meetup"
-            class="block w-full cursor-pointer rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black has-[:checked]:border-black has-[:checked]:bg-black has-[:checked]:text-white"
-            tabindex="0"
-          >
-            <input class="sr-only" id="option-meetup" type="radio" name="event-category" />
-            <span class="text-sm"> Meetup </span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Descrição do Evento -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700" for="description">Descrição do Evento</label>
-        <textarea
-          class="w-full rounded-lg border-gray-200 p-3 text-sm"
-          placeholder="Digite uma descrição detalhada do evento"
-          rows="5"
-          id="description"
-        ></textarea>
-      </div>
-
-      <!-- Local do Evento -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700" for="local">Local do Evento</label>
-        <input
-          class="w-full rounded-lg border-gray-200 p-3 text-sm"
-          placeholder="Digite o local do evento"
-          type="text"
-          id="local"
-        />
-      </div>
-
-      <!-- Descrição do Evento -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700" for="obrigatorio">O evento é obrigatorio?</label>
-        <select name="obrigatorio" id="obrigatorio">
-          <option value="0">Não</option>
-          <option value="1">Sim</option>
-        </select>
-      </div>
-
-      <!-- Botão de Cadastro -->
-      <div class="mt-4">
-        <button
-          type="submit"
-          class="inline-block w-full rounded-lg bg-green-700 px-5 py-3 font-medium text-white sm:w-auto hover:shadow-lg hover:bg-green-800 transition-shadow duration-300"
-        >
-          CADASTRAR
-        </button>
-      </div>
+      </div> 
     </form>
 
 
@@ -146,19 +37,46 @@
 
     <form method="POST" action="{{ route('events.store') }}" class="space-y-4">
     @csrf
-    <label for="title">Título:</label>
-    <input type="text" id="title" name="title" placeholder="Título do Evento" required>
 
-    <label for="description">Descrição:</label>
-    <textarea id="description" name="description" placeholder="Descrição"></textarea>
+    <!-- Nome do Evento -->
+    <label class="block text-sm font-medium text-gray-700" for="title">Título:</label>
+    <input  class="w-full rounded-lg border-gray-200 p-3 text-sm" 
+    placeholder="Digite o nome do evento" type="text" id="title" name="title" required>
 
-    <label for="local">Local:</label>
-    <input type="text" id="local" name="local" placeholder="Local do Evento" required>
+    <!-- Descrição do Evento -->
+    <label class="block text-sm font-medium text-gray-700" for="description">Descrição:</label>
+    <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm"
+          placeholder="Digite uma descrição detalhada do evento"
+          rows="5" id="description" name="description" placeholder="Descrição"></textarea>
 
-    <label for="obrigatorio">Obrigatório:</label>
-    <input type="checkbox" id="obrigatorio" name="obrigatorio" value="1">
+    <!-- Data e Local -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div>
+        <label class="block text-sm font-medium text-gray-700"  for="local">Local:</label>
+        <input  class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                placeholder="Digite o local do evento" type="text" id="local" name="local"  required>
 
-    <button type="submit">Salvar Evento</button>
+      </div>
+      <div class="mb-4">
+    <label for="obrigatorio" class="block text-sm font-medium text-gray-700 mb-2">Obrigatório:</label>
+    <select name="obrigatorio" id="obrigatorio" 
+        class="block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+</div>
+      
+    </div>
+
+    <!-- Botão de Cadastro -->
+    <div class="mt-4">
+        <button
+          type="submit"
+          class="inline-block w-full rounded-lg bg-green-700 px-5 py-3 font-medium text-white sm:w-auto hover:shadow-lg hover:bg-green-800 transition-shadow duration-300"
+        >
+          CADASTRAR
+        </button>
+      </div>
     </form>
 
 
