@@ -43,10 +43,11 @@
                         @if (Route::has('login'))
                             <nav class="-mx-3 flex flex-1 justify-end">
                                 @auth
-                                    <a href="{{ url('/dashboard') }}"
-                                    class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black hover:text-shadow-lg focus:outline-none focus-visible:ring-[#FF2D20] dark:text dark:hover:text/80 dark:focus-visible:ring">
-                                        Dashboard
+                                    <a href="{{ url('/in') }}" class="flex items-center gap-2 rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black hover:text-shadow-lg focus:outline-none focus-visible:ring-[#FF2D20] dark:text dark:hover:text/80 dark:focus-visible:ring">
+                                        <ion-icon name="person-outline"></ion-icon>
+                                        Perfil
                                     </a>
+
                                 @else
                                     <a href="{{ route('login') }}"
                                     class="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-black hover:text-shadow-lg focus:outline-none focus-visible:ring-[#FF2D20] dark:text dark:hover:text/80 dark:focus-visible:ring">
@@ -67,11 +68,11 @@
 
                 <!-- Navegação Secundária -->
                 <nav class="flex flex-wrap justify-center mt-2 space-x-4 text-gray-600">
-                    <a href="#" class="text-sm hover:underline">Home</a>
-                    <a href="#" class="text-sm hover:underline">Shop</a>
-                    <a href="#" class="text-sm hover:underline">Categories</a>
-                    <a href="#" class="text-sm hover:underline">Contact</a>
-                    <a href="#" class="text-sm hover:underline">About</a>
+                    <a href="#" class="text-sm hover:underline">Eventos</a>
+                    <a href="#" class="text-sm hover:underline">Eventos Obrigatorios</a>
+                    <a href="#" class="text-sm hover:underline">Sobre o Site</a>
+                    <a href="#" class="text-sm hover:underline">Seus Eventos</a>
+                    <!-- <a href="#" class="text-sm hover:underline">About</a> -->
                 </nav>
 
                 <!-- Barra de Pesquisa -->
@@ -132,5 +133,7 @@
                 </div>
             </div>
         </div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

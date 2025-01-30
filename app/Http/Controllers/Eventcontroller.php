@@ -14,6 +14,12 @@ class Eventcontroller extends Controller
         return view('welcome',['events' => $events]);
     }
 
+    public function index1() {
+
+        $events = Event::all();
+        return view('tables',['events' => $events]);
+    }
+
     public function cadastrar() {
         return view('perfil.forms');
     }

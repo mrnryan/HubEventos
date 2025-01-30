@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Eventcontroller;
 
 
-Route::get('/',  [Eventcontroller::class, 'index']); 
+Route::get('/',  [Eventcontroller::class, 'index'])->name('welcome');
 Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']); 
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
@@ -17,9 +17,7 @@ Route::get('/Dashboarde', function () {
     return view('ui-elements');
 })->middleware(['auth', 'verified'])->name('ui-elements');
 
-Route::get('/tabelas', function () {
-    return view('tables');
-})->middleware(['auth', 'verified'])->name('tables');
+Route::get('/tabelas', [Eventcontroller::class, 'index1'])->name('tables');
 
 Route::get('/in', function () {
     return view('index');
