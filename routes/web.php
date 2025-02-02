@@ -19,9 +19,7 @@ Route::get('/Dashboarde', function () {
 
 Route::get('/tabelas', [Eventcontroller::class, 'index1'])->name('tables');
 
-Route::get('/in', function () {
-    return view('index');
-})->middleware(['auth', 'verified'])->name('index');
+Route::get('/in', [Eventcontroller::class, 'index2'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('/perfil/dashboard');

@@ -6,18 +6,19 @@
 
 <section class="bg-gray-100 mt-6">
   <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-    <form method="POST" action="{{ route('events.store') }}" class="space-y-4">
-      @csrf
-      
-      <!-- Upload de Imagem -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700" for="event-image">Imagem do Evento</label>
+    <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data" class="space-y-4">
+    @csrf
+
+    <!-- Upload de Imagem -->
+    <div>
+        <label class="block text-sm font-medium text-gray-700" for="image">Imagem do Evento</label>
         <div class="flex items-center gap-4">
           <input
             type="file"
-            id="event-image"
+            id="image"
             class="w-full rounded-lg border-gray-200 p-3 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-green-700 file:text-white hover:file:bg-green-800"
             accept="image/*"
+            name="image"
             onchange="previewImage(event)"
           />
           
@@ -27,16 +28,6 @@
           </div>
         </div>
       </div> 
-    </form>
-
-
-
-
-
-
-
-    <form method="POST" action="{{ route('events.store') }}" class="space-y-4">
-    @csrf
 
     <!-- Nome do Evento -->
     <label class="block text-sm font-medium text-gray-700" for="title">Título:</label>

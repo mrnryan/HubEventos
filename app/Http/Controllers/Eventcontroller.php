@@ -20,6 +20,12 @@ class Eventcontroller extends Controller
         return view('tables',['events' => $events]);
     }
 
+    public function index2() {
+
+        $events = Event::all();
+        return view('index',['events' => $events]);
+    }
+
     public function cadastrar() {
         return view('perfil.forms');
     }
@@ -32,6 +38,22 @@ class Eventcontroller extends Controller
         $event->description = $request->description;
         $event->local = $request->local;
         $event->obrigatorio = $request->obrigatorio;
+
+        // upload de imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path("img/events"), $imageName);
+
+            $event->image = $imageName;
+
+
+        }
 
         $event->save();
 
