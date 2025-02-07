@@ -9,6 +9,8 @@ Route::get('/',  [Eventcontroller::class, 'index'])->name('welcome');
 Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']); 
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
+Route::get('/exibir_evento/{id}',  [Eventcontroller::class, 'exibir'])->name('evento'); 
+
 Route::get('/evento', function () {
     return view('evento');
 });

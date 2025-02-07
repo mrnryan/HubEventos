@@ -9,10 +9,10 @@
                 <table class="min-w-full">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nome e Data</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">O evento é obrigatorio?</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         </tr>
                     </thead>
@@ -29,30 +29,33 @@
 
                                     <div class="ml-4">
                                         <div class="text-sm leading-5 font-medium text-gray-900">{{ $event->title }}</div>
-                                        <div class="text-sm leading-5 text-gray-500">DATA::::</div>
+                                        <div class="text-sm leading-5 text-gray-500">Data: {{ date('d/m/Y', strtotime($event->date)) }}</div>
                                     </div>
                                 </div>
                             </td>
                             
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{{ $event->description ?: 'Evento sem descrição' }}</div>
-                                <!-- <div class="text-sm leading-5 text-gray-500">Web dev</div> -->
+                            <td class="px-6 py-4 whitespace-normal border-b border-gray-200 max-w-xs">
+                                <div class="text-sm leading-5 text-gray-900 break-words">
+                                    {{ $event->description ?: 'Evento sem descrição' }}
+                                </div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $event->obrigatorio ? 'Sim' : 'Não' }}</span>
                             </td>
 
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
+                           
+ <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $event->categoria == 0 ? 'Tecnologia' : ($event->categoria == 1 ? 'Arquitetura' : ($event->categoria == 2 ? 'Mecânica' : ($event->categoria == 3 ? 'Eventos' : ''))) }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
                         </tr>
-
-                    @endforeach
-                  
                     </tbody>
+                    @endforeach
+                    @if(count($events) == 0)
+                        <p>Não há eventos disponiveís no momento.</p>
+                    @endif
+                  
                 </table>
             </div>
         </div>

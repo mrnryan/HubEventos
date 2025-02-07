@@ -15,4 +15,6 @@ class Event extends Model
         'local',
         'obrigatorio',
     ];
+
+    protected $dates = ['date'];
 }
