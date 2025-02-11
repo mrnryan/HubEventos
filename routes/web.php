@@ -27,6 +27,11 @@ Route::get('/dashboard', function () {
     return view('/perfil/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// so entra ne view se estiver logado
+// Route::get('/dashboard', function () {
+//     return view('/perfil/dashboard');
+// })->middleware(['auth', 'verified'])->middleware('auth');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

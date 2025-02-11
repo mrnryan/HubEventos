@@ -10,8 +10,19 @@ class Eventcontroller extends Controller
 {
     public function index() {
 
-        $events = Event::all();
-        return view('welcome',['events' => $events]);
+        $search = request('search');
+
+        if($search) {
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }
+
+        else {
+            $events = Event::all();
+        }
+
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
     public function index1() {
@@ -22,8 +33,19 @@ class Eventcontroller extends Controller
 
     public function index2() {
 
-        $events = Event::all();
-        return view('index',['events' => $events]);
+        $search = request('search');
+
+        if($search) {
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }
+
+        else {
+            $events = Event::all();
+        }
+
+        return view('index', ['events' => $events, 'search' => $search]);
     }
 
     public function cadastrar() {
