@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
     return view('/perfil/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/sobre', function () {
+    return view('/sobre_site');
+});
+
 // so entra ne view se estiver logado
 // Route::get('/dashboard', function () {
 //     return view('/perfil/dashboard');

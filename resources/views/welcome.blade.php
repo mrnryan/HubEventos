@@ -77,7 +77,7 @@
                 <nav class="flex flex-wrap justify-center mt-2 space-x-4 text-gray-600">
                     <a href="#" class="text-sm hover:underline">Eventos</a>
                     <a href="#" class="text-sm hover:underline">Eventos Obrigatorios</a>
-                    <a href="#" class="text-sm hover:underline">Sobre o Site</a>
+                    <a href="/sobre" class="text-sm hover:underline">Sobre o Site</a>
                     <a href="#" class="text-sm hover:underline">Seus Eventos</a>
                     <!-- <a href="#" class="text-sm hover:underline">About</a> -->
                 </nav>
