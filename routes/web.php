@@ -10,6 +10,8 @@ Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']);
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
 Route::get('/exibir_evento/{id}',  [Eventcontroller::class, 'exibir'])->name('evento'); 
+Route::get('/tables', [EventController::class, 'showViewedEvents'])->middleware(['auth', 'verified'])->name('tables');
+
 
 // DELETAR, EDITAR EVENTOS E UPDATE DO EVENTO
 Route::delete('/exibir_evento/{id}',  [Eventcontroller::class, 'destroy']); 

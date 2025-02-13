@@ -87,10 +87,35 @@ class Eventcontroller extends Controller
 
     public function exibir($id) {
 
+            // Buscar o evento pelo ID
         $event = Event::findOrFail($id);
+
+        // Armazenar o evento na sessão
+        $viewedEvents = session()->get('viewed_events', []);
+        
+        // Evita duplicar o evento na sessão
+        if (!in_array($id, $viewedEvents)) {
+            $viewedEvents[] = $id;
+        }
+
+        // Salva a lista de eventos visualizados na sessão
+        session()->put('viewed_events', $viewedEvents);
 
         return view('/exibir_evento/evento', ['event' => $event]);
     }
+
+    public function showViewedEvents() {
+        
+        // Obtém os eventos visualizados da sessão
+        $viewedEventsIds = session()->get('viewed_events', []);
+
+        // Busca os eventos no banco de dados com base nos IDs armazenados
+        $viewedEvents = Event::whereIn('id', $viewedEventsIds)->get();
+
+        // Retorna a view com os eventos visualizados
+        return view('/tables', compact('viewedEvents'));
+    }
+
 
     public function destroy($id) {
 

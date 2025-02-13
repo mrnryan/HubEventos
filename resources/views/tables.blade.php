@@ -5,7 +5,7 @@
 
     <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-        @foreach($events as $event)
+        @foreach($viewedEvents as $event)
             <!-- Card do Evento -->
             <div class="bg-white rounded-lg border border-gray-200 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out p-4 overflow-hidden">
                 <!-- Imagem do Evento -->
@@ -24,6 +24,9 @@
                 </div>
             </div>
         @endforeach
+        @if($viewedEvents->isEmpty())
+        <p class="text-gray-500">Nenhum evento visualizado ainda.</p>
+        @endif
     </div>
 </div>
 

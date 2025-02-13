@@ -78,7 +78,7 @@
                     <a href="#" class="text-sm hover:underline">Eventos</a>
                     <a href="#" class="text-sm hover:underline">Eventos Obrigatorios</a>
                     <a href="/sobre" class="text-sm hover:underline">Sobre o Site</a>
-                    <a href="#" class="text-sm hover:underline">Seus Eventos</a>
+                    <a href="tables" class="text-sm hover:underline">Seus Eventos</a>
                     <!-- <a href="#" class="text-sm hover:underline">About</a> -->
                 </nav>
 
