@@ -16,5 +16,7 @@ class Event extends Model
         'obrigatorio',
     ];
 
+    protected $guarded = [];
+
     protected $dates = ['date'];
 }

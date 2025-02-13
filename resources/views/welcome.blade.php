@@ -20,9 +20,9 @@
             </style>
         @endif
 
-        @if(session('success'))
+        @if(session('msg'))
             <div class="flex items-center justify-center bg-green-100 text-green-800 p-4 rounded-md mb-4 w-full">
-                {{ session('success') }}
+                {{ session('msg') }}
             </div>
         @endif
 
