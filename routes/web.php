@@ -8,6 +8,8 @@ use App\Http\Controllers\Eventcontroller;
 Route::get('/',  [Eventcontroller::class, 'index'])->name('welcome');
 Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']); 
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::get('/eventosObrigatorios', [EventController::class, 'showMandatoryEvents'])->name('permanentes');
+
 
 Route::get('/exibir_evento/{id}',  [Eventcontroller::class, 'exibir'])->name('evento'); 
 Route::get('/tables', [EventController::class, 'showViewedEvents'])->middleware(['auth', 'verified'])->name('tables');

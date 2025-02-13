@@ -85,6 +85,15 @@ class Eventcontroller extends Controller
 
     }
 
+    public function showMandatoryEvents()
+    {
+        // Buscar eventos obrigatórios onde 'obrigatorio' é igual a 1
+        $mandatoryEvents = Event::where('obrigatorio', 1)->get();
+
+        // Retorna a view com os eventos obrigatórios
+        return view('permanentes', compact('mandatoryEvents'));
+    }
+
     public function exibir($id) {
 
             // Buscar o evento pelo ID
