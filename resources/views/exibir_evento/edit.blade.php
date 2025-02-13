@@ -8,7 +8,7 @@
 
 <section class="bg-gray-100 mt-6">
   <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-    <form method="POST" action="/exibir_evento/update/{{ $event->id }}" enctype="multipart/form-data" class="space-y-4">
+    <form method="POST" action="{{ url('/exibir_evento/update/' . $event->id) }}" enctype="multipart/form-data" class="space-y-4">
     @csrf
     @method('PUT')
 

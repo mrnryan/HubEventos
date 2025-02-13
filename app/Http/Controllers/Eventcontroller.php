@@ -106,29 +106,34 @@ class Eventcontroller extends Controller
         return view('/exibir_evento.edit', ['event' => $event]);
     }
 
-    public function update(Request $request) {
-
-        $data = $request->all();
-
-        // upload de imagem
-        if($request->hasFile('image') && $request->file('image')->isValid()) {
-
-            $requestImage = $request->image;
-
+    public function update(Request $request, $id) {
+        // Encontrar o evento pelo ID
+        $event = Event::findOrFail($id);
+    
+        // Atualizar os outros campos do evento
+        $event->title = $request->title;
+        $event->date = $request->date;
+        $event->description = $request->description;
+        $event->local = $request->local;
+        $event->obrigatorio = $request->obrigatorio;
+        $event->categoria = $request->categoria;
+    
+        // Verifica se há um novo upload de imagem
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->file('image');
             $extension = $requestImage->extension();
-
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-
+            
+            // Move a nova imagem para a pasta correta
             $requestImage->move(public_path("img/events"), $imageName);
-
-            $data['image'] = $imageName;
-
-
+    
+            // Atualiza o nome da imagem no evento
+            $event->image = $imageName;
         }
+    
+        // Salva as alterações no banco de dados
+        $event->save();
 
-
-        Event::findOrFail($request->id)->update($data);
-
-        return redirect('/')->with('msg', "Evento editado com sucesso");
+        return redirect('/')->with('msg', "Evento editado com sucesso");    
     }
 }
