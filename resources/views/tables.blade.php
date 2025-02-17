@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('body')
-    <h3 class="text-gray-700 text-3xl font-medium">Tables</h3>
+    <h3 class="text-gray-700 text-3xl font-medium">Eventos visualizados recentimente</h3>
 
     <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
