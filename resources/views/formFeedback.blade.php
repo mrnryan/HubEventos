@@ -69,21 +69,33 @@
           </button>
         </form>
         @if(auth()->check())
-        <form action="{{ route('formFeedback', ['eventId' => $evento->id]) }}" method="POST" class="mt-6">
-        @csrf
-        <div>
-            <label for="rating" class="block text-gray-700">Avaliação</label>
-            <input type="number" name="rating" min="1" max="5" required class="border p-2 rounded w-full">
-        </div>
+          <form action="{{ route('feedback.store', $event->id) }}" method="POST">
+          @csrf
 
-        <div class="mt-4">
-            <label for="comment" class="block text-gray-700">Comentário</label>
-            <textarea name="comment" rows="4" class="border p-2 rounded w-full"></textarea>
-        </div>
+            <div class="mt-4">
+                <label class="block font-semibold">Nome:</label>
+                <input type="text" name="name" class="w-full border rounded p-2" required>
+            </div>
 
-        <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded">Enviar Feedback</button>
-    </form>
-@endif
+            <div class="mt-4">
+                <label class="block font-semibold">Comentário:</label>
+                <textarea name="comment" class="w-full border rounded p-2" required></textarea>
+            </div>
+
+            <div class="mt-4">
+                <label class="block font-semibold">Nota (1 a 5):</label>
+                <select name="rating" class="w-full border rounded p-2" required>
+                    <option value="1">1 - Péssimo</option>
+                    <option value="2">2 - Ruim</option>
+                    <option value="3">3 - Regular</option>
+                    <option value="4">4 - Bom</option>
+                    <option value="5">5 - Excelente</option>
+                </select>
+            </div>
+
+            <button type="submit" class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Enviar</button>
+          </form>
+      @endif
     </div>
   </section>
 

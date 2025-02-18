@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Eventcontroller;
+use App\Http\Controllers\FeedbackController;
 
 
 Route::get('/',  [Eventcontroller::class, 'index'])->name('welcome');
@@ -10,6 +11,12 @@ Route::get('/evento/cadastro',  [Eventcontroller::class, 'cadastrar']);
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/eventosObrigatorios', [EventController::class, 'showMandatoryEvents'])->name('permanentes');
 
+// Rota para exibir os feedbacks de um evento
+Route::get('/evento/{id}/feedback', [FeedbackController::class, 'show'])->name('event.feedback');
+
+// Rota para armazenar um novo feedback
+Route::post('/evento/{id}/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/event/{id}/feedback', [FeedbackController::class, 'ver'])->name('feedback.ver');
 
 Route::get('/exibir_evento/{id}',  [Eventcontroller::class, 'exibir'])->name('evento'); 
 Route::get('/tables', [EventController::class, 'showViewedEvents'])->middleware(['auth', 'verified'])->name('tables');
@@ -23,6 +30,7 @@ Route::put('/exibir_evento/update/{id}',  [Eventcontroller::class, 'update']);
 Route::get('/evento', function () {
     return view('evento');
 });
+
 
 Route::get('/Dashboarde', function () {
     return view('ui-elements');
