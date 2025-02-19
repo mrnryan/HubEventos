@@ -11,10 +11,9 @@ class FeedbackController extends Controller
     // Exibir os feedbacks de um evento específico
     public function show($eventId)
     {
-        $event = Event::findOrFail($eventId);
-        $feedbacks = Feedback::where('event_id', $eventId)->get();
+        $events = Event::whereHas('feedbacks')->with('feedbacks')->get(); 
 
-        return view('perfil.feedback', compact('event', 'feedbacks'));
+        return view('perfil.feedback', compact('events'));
     }
 
     // Método para exibir o formulário de feedback
@@ -43,6 +42,6 @@ class FeedbackController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('event.feedback', $eventId)->with('success', 'Feedback enviado com sucesso!');
+        return redirect('/')->with('msg', 'Feedback enviado com sucesso!');
     }
 }

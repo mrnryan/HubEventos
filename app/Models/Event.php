@@ -19,4 +19,9 @@ class Event extends Model
     protected $guarded = [];
 
     protected $dates = ['date'];
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }
