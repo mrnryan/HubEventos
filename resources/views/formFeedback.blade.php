@@ -20,7 +20,7 @@
           @csrf
 
           <div class="mt-4">
-                <label class="block font-semibold">Nome de usuario:</label>
+                <label class="block font-semibold">Nome de usuário:</label>
                 <input type="text" name="name" placeholder="Digite seu nome de usuário" class="w-full border rounded p-2" required>
             </div>
 
