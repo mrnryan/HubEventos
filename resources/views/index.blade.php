@@ -45,7 +45,15 @@
                             </td>
 
                            
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $event->categoria == 0 ? 'Tecnologia' : ($event->categoria == 1 ? 'Arquitetura' : ($event->categoria == 2 ? 'Mecânica' : ($event->categoria == 3 ? 'Eventos' : ''))) }}</td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                {{ $event->categoria == 0 ? 'Acadêmico' : 
+                                ($event->categoria == 1 ? 'Corporativo' : 
+                                ($event->categoria == 2 ? 'Cultural' : 
+                                ($event->categoria == 3 ? 'Social' : 
+                                ($event->categoria == 4 ? 'Tecnologia' : 
+                                ($event->categoria == 5 ? 'Esportivo' : ''))))) }}
+                            </td>
+
                             <td class="py-7 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium flex space-x-3">
                                 <a href="/exibir_evento/edit/{{ $event->id }}" class="flex items-center bg-blue-600 text-white hover:bg-blue-700 font-medium px-3 py-2 rounded-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">

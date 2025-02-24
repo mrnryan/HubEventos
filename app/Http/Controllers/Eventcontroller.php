@@ -113,19 +113,6 @@ class Eventcontroller extends Controller
         return view('/exibir_evento/evento', ['event' => $event]);
     }
 
-    public function showViewedEvents() {
-        
-        // Obtém os eventos visualizados da sessão
-        $viewedEventsIds = session()->get('viewed_events', []);
-
-        // Busca os eventos no banco de dados com base nos IDs armazenados
-        $viewedEvents = Event::whereIn('id', $viewedEventsIds)->get();
-
-        // Retorna a view com os eventos visualizados
-        return view('/tables', compact('viewedEvents'));
-    }
-
-
     public function destroy($id) {
 
         $event = Event::findOrFail($id)->delete();
@@ -170,4 +157,40 @@ class Eventcontroller extends Controller
 
         return redirect('/')->with('msg', "Evento editado com sucesso");    
     }
+
+    public function favoriteEvent($eventId)
+    {
+            // Verifica se o usuário está autenticado
+        if (!auth()->check()) {
+            return redirect()->route('login'); // Ou redirecionar para uma página de login
+        }
+
+        $event = Event::findOrFail($eventId);
+        $user = auth()->user();
+
+        // Verifica se o evento já foi favoritado, senão favorita
+        if ($user->favoriteEvents->contains($event)) {
+            $user->favoriteEvents()->detach($event);
+        } else {
+            $user->favoriteEvents()->attach($event);
+        }
+
+        return back(); // Redireciona de volta para a página anterior
+    }
+
+    public function showFavoriteEvents()
+    {
+            // Verifica se o usuário está autenticado
+        if (!auth()->check()) {
+            return redirect()->route('login'); // Redireciona para login
+        }
+
+        $user = auth()->user();
+        $favoriteEvents = $user->favoriteEvents; // Busca os eventos favoritados
+
+        return view('/tables', compact('favoriteEvents'));
+    }
+
+
+
 }

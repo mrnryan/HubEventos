@@ -19,13 +19,20 @@ Route::post('/evento/{id}/feedback', [FeedbackController::class, 'store'])->name
 Route::get('/event/{id}/feedback', [FeedbackController::class, 'ver'])->name('feedback.ver');
 
 Route::get('/exibir_evento/{id}',  [Eventcontroller::class, 'exibir'])->name('evento'); 
-Route::get('/tables', [EventController::class, 'showViewedEvents'])->middleware(['auth', 'verified'])->name('tables');
 
 
 // DELETAR, EDITAR EVENTOS E UPDATE DO EVENTO
 Route::delete('/exibir_evento/{id}',  [Eventcontroller::class, 'destroy']); 
 Route::get('/exibir_evento/edit/{id}',  [Eventcontroller::class, 'edit']); 
 Route::put('/exibir_evento/update/{id}',  [Eventcontroller::class, 'update']); 
+
+//ROTAS PARA FAVORITAR EVENTO
+Route::post('/evento/{eventId}/favoritar', [EventController::class, 'favoriteEvent'])->middleware(['auth', 'verified'])->name('event.favorite');
+Route::get('/eventos-favoritos', [EventController::class, 'showFavoriteEvents'])->middleware(['auth', 'verified'])->name('tables');
+
+//FILTRO EVENTOS POR CATEGORIA
+// Route::get('/eventos/filtrar', [EventController::class, 'filter'])->name('events.filter');
+
 
 Route::get('/evento', function () {
     return view('evento');

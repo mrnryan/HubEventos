@@ -67,10 +67,12 @@
         <label for="categoria" class="block text-sm font-medium text-gray-700 mb-2">Categoria:</label>
         <select name="categoria" id="categoria" 
             class="block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
-            <option value="0">Tecnologia</option>
-            <option value="1">Arquitetura</option>
-            <option value="2">Mecanica</option>
-            <option value="3">Eventos</option>
+            <option value="0">Acadêmico </option>
+            <option value="1">Corporativo</option>
+            <option value="2">Cultural</option>
+            <option value="3">Social</option>
+            <option value="4">Tecnologia</option>
+            <option value="5">Esportivo </option>
         </select>
     </div>
 

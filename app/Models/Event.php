@@ -24,4 +24,10 @@ class Event extends Model
     {
         return $this->hasMany(Feedback::class);
     }
+
+    public function usersWhoFavorited()
+    {
+        return $this->belongsToMany(User::class, 'event_user_favorites');
+    }
+
 }

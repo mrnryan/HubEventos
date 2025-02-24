@@ -32,7 +32,7 @@
                     <!-- Nome da Marca -->
                     <div class=" flex justify-center items-center">
                     
-                        <img src="{{ asset('img/IForma.jpg') }}" alt="Minha Imagem" width="500">
+                        <img src="{{ asset('img/Logo_IForma_atualizada.png') }}" alt="Minha Imagem" width="500">
 
                     </div>
 
@@ -67,9 +67,9 @@
                 <!-- Navegação Secundária -->
                 <nav class="flex flex-wrap justify-center mt-2 space-x-4 text-gray-600">
                     <a href="/" class="text-sm hover:underline">Eventos</a>
-                    <a href="/eventosObrigatorios" class="text-sm hover:underline">Eventos Obrigatorios</a>
+                    <a href="/eventosObrigatorios" class="text-sm hover:underline">Eventos Permanentes</a>
                     <a href="/sobre" class="text-sm hover:underline">Sobre o Site</a>
-                    <a href="/tables" class="text-sm hover:underline">Seus Eventos</a>
+                    <a href="/eventos-favoritos" class="text-sm hover:underline">Favoritos</a>
                     <!-- <a href="#" class="text-sm hover:underline">About</a> -->
                 </nav>
 

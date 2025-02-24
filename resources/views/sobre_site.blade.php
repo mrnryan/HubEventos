@@ -5,7 +5,7 @@
 <section class="dark:bg-gray-100 dark:text-gray-800 max-w-6xl mx-auto rounded-lg">
 	<div class="container flex flex-col justify-center p-4 mx-auto mt-10 md:p-8">
 		<p class="p-2 text-sm font-medium tracking-wider text-center uppercase">Sobre o Portal</p>
-		<h2 class="mb-12 text-4xl font-bold leading-none text-center sm:text-4xl">Inovação e Formação de Eventos do IFRN</h2>
+		<h2 class="mb-12 text-4xl font-bold leading-none text-center sm:text-3xl">Inovação e Formação de Eventos do IFRN - Campus Canguaretama</h2>
 		<div class="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300">
 			<details>
 				<summary class="py-2 outline-none cursor-pointer focus:underline">Por que este portal existe?</summary>
