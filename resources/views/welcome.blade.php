@@ -32,24 +32,21 @@
                     <!-- Logo e Informações -->
                     <div class="hidden w-full text-gray-600 md:flex md:items-center">
                     <form method="GET" action="{{ route('EventCategoria') }}" class="flex items-center space-x-4">
-    <div class="mb-4 flex-1">
-        <select name="categoria" id="categoria" 
-            class="block w-45 p-2 pl-3 pr-10 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
-            <option value="0" disabled selected>Selecione uma categoria</option> <!-- Placeholder -->
-            <option value="0">Acadêmico</option>
-            <option value="1">Corporativo</option>
-            <option value="2">Cultural</option>
-            <option value="3">Social</option>
-            <option value="4">Tecnologia</option>
-            <option value="5">Esportivo</option>
-        </select>
-    </div>
+                        <div class=" flex-1">
+                            <select name="categoria" id="categoria" 
+                                class="block w-45 p-2 pl-3 pr-10 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="0" disabled selected>Selecione uma categoria</option> <!-- Placeholder -->
+                                <option value="0">Acadêmico</option>
+                                <option value="1">Corporativo</option>
+                                <option value="2">Cultural</option>
+                                <option value="3">Social</option>
+                                <option value="4">Tecnologia</option>
+                                <option value="5">Esportivo</option>
+                            </select>
+                        </div>
 
-    <button type="submit" class="bg-blue-500 text-white p-2 rounded-lg">Filtrar</button>
-</form>
-
-
-
+                        <button type="submit" class="bg-blue-500 text-white p-2 rounded-lg">Filtrar</button>
+                    </form>
                     </div>
 
                     <!-- Nome da Marca -->
