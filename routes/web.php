@@ -32,6 +32,8 @@ Route::get('/eventos-favoritos', [EventController::class, 'showFavoriteEvents'])
 
 //FILTRO EVENTOS POR CATEGORIA
 // Route::get('/eventos/filtrar', [EventController::class, 'filter'])->name('events.filter');
+Route::get('/eventos-filtrados', [EventController::class, 'filtrocategoria'])->name('EventCategoria');
+
 
 
 Route::get('/evento', function () {

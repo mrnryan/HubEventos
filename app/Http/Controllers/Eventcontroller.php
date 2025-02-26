@@ -191,6 +191,26 @@ class Eventcontroller extends Controller
         return view('/tables', compact('favoriteEvents'));
     }
 
+    public function filtrocategoria(Request $request)
+    {
+        // Captura o valor da categoria do filtro
+        $categoria = $request->input('categoria');
+        
+        // Se a categoria for 0 (todos), não aplica filtro
+        if ($categoria == 0) {
+            $events = Event::all();  // Exibe todos os eventos
+        } else {
+            $events = Event::where('categoria', $categoria)->get();  // Filtra os eventos pela categoria
+        }
+
+        // Verifica se não há eventos para a categoria
+        $message = $events->isEmpty() ? 'Não há eventos cadastrados para essa categoria.' : null;
+
+        // Retorna a view com os eventos ou a mensagem
+        return view('EventCategoria', compact('events', 'message'));
+    }
+
+
 
 
 }
