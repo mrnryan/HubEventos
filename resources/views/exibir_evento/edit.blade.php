@@ -4,7 +4,7 @@
 
 @section('body')
 
-<h3 class="text-gray-700 text-3xl font-medium">CADASTRAR EVENTO</h3>
+<h3 class="text-gray-700 text-3xl font-medium">EDITAR EVENTO</h3>
 
 <section class="bg-gray-100 mt-6">
   <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
@@ -33,17 +33,23 @@
     </div>
 </div>
 
-    <!-- Nome do Evento -->
+<!-- Nome e Data -->
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div>
+          <!-- Nome do Evento -->
     <label class="block text-sm font-medium text-gray-700" for="title">Título:</label>
     <input  class="w-full rounded-lg border-gray-200 p-3 text-sm" 
     placeholder="Digite o nome do evento" value="{{ $event->title }}" type="text" id="title" name="title" required>
 
-    <!-- Data do evento -->
+      </div>
+      <div class="mb-4">
+           <!-- Data do evento -->
     <label class="block text-sm font-medium text-gray-700" for="date">Data do evento</label>
     <input class="w-full rounded-lg border-gray-200 p-3 text-sm"
     value="{{ old('date', isset($event->date) ? date('Y-m-d', strtotime($event->date)) : '') }}"
     type="date" id="date" name="date" required>
-
+      </div>
+    </div>
 
     <!-- Descrição do Evento -->
     <label class="block text-sm font-medium text-gray-700" for="description">Descrição:</label>
@@ -73,10 +79,13 @@
         <label for="categoria" class="block text-sm font-medium text-gray-700 mb-2">Categoria:</label>
         <select name="categoria" id="categoria" 
             class="block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
-            <option value="0">Tecnologia</option>
-            <option value="1" {{ $event->categoria == 1 ? "selected='selected'" : "" }} >Arquitetura</option>
-            <option value="2" {{ $event->categoria == 2 ? "selected='selected'" : "" }} >Mecanica</option>
-            <option value="3" {{ $event->categoria == 3 ? "selected='selected'" : "" }} >Eventos</option>
+            <option value="0">Acadêmico</option>
+            <option value="1" {{ $event->categoria == 1 ? "selected='selected'" : "" }} >Corporativo</option>
+            <option value="2" {{ $event->categoria == 2 ? "selected='selected'" : "" }} >Cultural</option>
+            <option value="3" {{ $event->categoria == 3 ? "selected='selected'" : "" }} >Social</option>
+            <option value="4" {{ $event->categoria == 4 ? "selected='selected'" : "" }} >Tecnologia</option>
+            <option value="5" {{ $event->categoria == 5 ? "selected='selected'" : "" }} >Esportivo</option>
+
         </select>
     </div>
 
