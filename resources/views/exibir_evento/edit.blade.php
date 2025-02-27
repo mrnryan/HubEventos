@@ -89,6 +89,13 @@
         </select>
     </div>
 
+    <div>
+    <label for="link" class="block font-medium text-sm text-gray-700">Link para inscrição no Evento (Opcional)</label>
+    <input type="url" name="link" id="link" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
+        value="{{ old('link', $event->link) }}">
+  </div>
+
+
     <!-- Botão de Cadastro -->
     <div class="mt-4">
         <button

@@ -28,11 +28,32 @@
               <input id="local" type="text" value="{{ $event->local }}" class="w-full bg-gray-100 text-gray-700 border border-gray-300 p-3 rounded-md cursor-not-allowed" disabled>
             </div>
           </div>
-          <div class="px-1 py-4">
-            <a href="{{ route('feedback.ver', $event->id) }}" class="inline-block text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-3 text-center transition-all duration-300 ease-in-out transform hover:scale-105">
-                Deixe seu feedback
-            </a>
-        </div>
+
+
+          <!-- Link de inscrição -->
+          <label for="local" class="text-sm font-semibold text-gray-700">Inscreva-se no link a baixo:</label>
+            <div>
+            @if($event->link)
+                <p class="mt-2">
+                    <a href="{{ $event->link }}" target="_blank" class="text-blue-500 underline hover:text-blue-700">
+                        Clique aqui para se inscrever
+                    </a>
+                </p>
+            @else
+                <div class="mt-2 p-3 bg-gray-100 border border-gray-300 rounded-md text-gray-600">
+                    <p>⚠ Este evento não possui um link para inscrição.</p>
+                </div>
+            @endif
+
+            </div>
+            <div class="px-1 py-4 flex justify-end">
+    <a href="{{ route('feedback.ver', $event->id) }}" 
+       class="inline-block text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-3 text-center transition-all duration-300 ease-in-out transform hover:scale-105">
+        Deixe seu feedback
+    </a>
+</div>
+
+          </div>
 
         </div>
 

@@ -62,6 +62,8 @@ class Eventcontroller extends Controller
         $event->local = $request->local;
         $event->obrigatorio = $request->obrigatorio;
         $event->categoria = $request->categoria;
+        $event->link = $request->link ?? null;
+
 
         // upload de imagem
         if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -138,6 +140,7 @@ class Eventcontroller extends Controller
         $event->local = $request->local;
         $event->obrigatorio = $request->obrigatorio;
         $event->categoria = $request->categoria;
+        $event->link = $request->link ?? null;
     
         // Verifica se há um novo upload de imagem
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

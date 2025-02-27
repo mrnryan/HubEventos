@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('local');
             $table->boolean('obrigatorio');
             $table->boolean('categoria');
+            $table->string('link')->nullable();
         });
     }
 
