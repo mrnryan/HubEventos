@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Eventcontroller;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ChatController;
 
 
 Route::get('/',  [Eventcontroller::class, 'index'])->name('welcome');
@@ -33,6 +34,10 @@ Route::get('/eventos-favoritos', [EventController::class, 'showFavoriteEvents'])
 //FILTRO EVENTOS POR CATEGORIA
 // Route::get('/eventos/filtrar', [EventController::class, 'filter'])->name('events.filter');
 Route::get('/eventos-filtrados', [EventController::class, 'filtrocategoria'])->name('EventCategoria');
+
+
+Route::get('/exibir_evento/{id}', [EventController::class, 'exibir'])->name('event.exibir');
+Route::post('/exibir_evento/{id}', [EventController::class, 'storeMessage'])->middleware(['auth', 'verified'])->name('event.storeMessage');
 
 
 

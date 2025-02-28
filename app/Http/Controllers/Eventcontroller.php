@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\Event;
+use App\models\Message;
+
 
 class Eventcontroller extends Controller
 {
@@ -100,19 +102,25 @@ class Eventcontroller extends Controller
 
             // Buscar o evento pelo ID
         $event = Event::findOrFail($id);
+        // Ordenar mensagens pela data de criação (campo `created_at`) em ordem crescente (do mais antigo para o mais recente)
+        $messages = Message::where('event_id', $id)->orderBy('created_at', 'asc')->get(); 
 
-        // Armazenar o evento na sessão
-        $viewedEvents = session()->get('viewed_events', []);
-        
-        // Evita duplicar o evento na sessão
-        if (!in_array($id, $viewedEvents)) {
-            $viewedEvents[] = $id;
-        }
+        return view('/exibir_evento/evento', ['event' => $event, 'messages' => $messages]);
+    }
 
-        // Salva a lista de eventos visualizados na sessão
-        session()->put('viewed_events', $viewedEvents);
+    public function storeMessage(Request $request, $id)
+    {
+        $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
 
-        return view('/exibir_evento/evento', ['event' => $event]);
+        Message::create([
+            'event_id' => $id,
+            'user_id' => auth()->id(),
+            'message' => $request->message,
+        ]);
+
+        return redirect()->route('event.storeMessage', $id); // Redireciona para a mesma página do evento
     }
 
     public function destroy($id) {
